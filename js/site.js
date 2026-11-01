@@ -4,7 +4,7 @@ var nav=document.getElementById('nav'),mb=document.getElementById('mb');
 function go(){var h=(location.hash||'#home').slice(1);if(ids.indexOf(h)<0)h='home';
 ids.forEach(function(i){document.getElementById(i).classList.toggle('on',i===h)});
 document.querySelectorAll('.links a').forEach(function(a){if(a.getAttribute('href')==='#'+h)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
-document.getElementById('bk').style.display=h==='booking'?'none':'block';nav.classList.remove('open');mb.setAttribute('aria-expanded','false');window.scrollTo(0,0)}
+document.getElementById('bk').style.display=h==='booking'?'none':'block';nav.classList.remove('open');mb.setAttribute('aria-expanded','false');if(h==='booking'){requestAnimationFrame(function(){var b=document.getElementById('brequest');if(b)b.scrollIntoView({block:'start'})})}else window.scrollTo(0,0)}
 window.addEventListener('hashchange',go);go();
 mb.addEventListener('click',function(){var o=nav.classList.toggle('open');mb.setAttribute('aria-expanded',o?'true':'false')});
 function p2(n){return n<10?'0'+n:''+n}
